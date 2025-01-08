@@ -1,0 +1,32 @@
+Aby przeprowadzić symulację dla systemu z 100 użytkownikami, gdzie każdy może być zalogowany lub wylogowany, możemy zastosować łańcuch Markowa z 101 stanami (od 0 do 100 zalogowanych użytkowników). Prawdopodobieństwa przejść między stanami zależą od liczby zalogowanych i wylogowanych użytkowników oraz od ustalonych prawdopodobieństw logowania i wylogowania.
+
+Założenia:
+
+    Liczba użytkowników: 100
+    Prawdopodobieństwo logowania dla niezalogowanego użytkownika: 0,2
+    Prawdopodobieństwo pozostania niezalogowanym: 0,8
+    Prawdopodobieństwo wylogowania dla zalogowanego użytkownika: 0,5
+    Prawdopodobieństwo pozostania zalogowanym: 0,5
+
+Kroki do wykonania:
+
+    Definicja macierzy przejść PP:
+        Dla każdego stanu xx (liczba zalogowanych użytkowników), obliczamy prawdopodobieństwa przejścia do stanów x−1x−1, xx i x+1x+1, uwzględniając liczby zalogowanych i niezalogowanych użytkowników oraz ich odpowiednie prawdopodobieństwa logowania i wylogowania.
+
+    Symulacja łańcucha Markowa:
+        Rozpoczynamy od wybranego stanu początkowego.
+        Przez Nmax=104Nmax​=104 kroków losujemy przejścia między stanami zgodnie z macierzą przejść PP.
+        Zliczamy, ile razy każdy stan został odwiedzony.
+
+    Obliczenie rozkładu stacjonarnego πEXPπEXP:
+        Dla każdego stanu ii obliczamy πiEXP=NiNπiEXP​=NNi​​, gdzie NiNi​ to liczba odwiedzin stanu ii, a NN to łączna liczba kroków.
+
+    Wizualizacja zbieżności:
+        Tworzymy wykresy przedstawiające zbieżność πiEXPπiEXP​ w funkcji liczby kroków NN dla różnych stanów początkowych.
+
+Uwagi:
+
+    Ze względu na dużą liczbę stanów (101), pełna macierz przejść PP jest duża, ale rzadka (wiele przejść ma prawdopodobieństwo 0).
+    W powyższej implementacji funkcje calculateStayProbability, calculateUpProbability i calculateDownProbability obliczają odpowiednie prawdopodobieństwa przejść z bieżącego stanu.
+    Symulacja jest przeprowadzana dla stanów początkowych 0, 50 i 100, ale można dostosować to do innych stanów początkowych.
+    Wyniki πiEXPπiEXP​ są wyświetlane co 100

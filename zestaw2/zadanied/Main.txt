@@ -1,0 +1,34 @@
+Aby zaimplementować symulację łańcucha Markowa z zależnymi od stanu prawdopodobieństwami przejścia w języku Java, można postępować według następujących kroków:
+
+    Definicja parametrów:
+        Liczba użytkowników: N = 100
+        Maksymalna liczba iteracji: Nmax = 10_000
+        Prawdopodobieństwa logowania i wylogowania:
+            Dla niezalogowanych użytkowników:
+                Plogowania = 0.2
+                PpozostaniaNiezalogowanym = 0.8
+            Dla zalogowanych użytkowników:
+                Pwylogowania(x) = 1 - (0.008 * x + 0.1)
+                PpozostaniaZalogowanym(x) = 0.008 * x + 0.1
+
+    Implementacja symulacji:
+        Inicjalizacja:
+            Ustaw początkowy stan systemu, np. x = 0 (wszyscy użytkownicy niezalogowani).
+            Utwórz tablicę do zliczania liczby odwiedzin każdego stanu: int[] odwiedziny = new int[N + 1];
+        Symulacja:
+            Wykonaj pętlę przez Nmax iteracji.
+            W każdej iteracji:
+                Oblicz prawdopodobieństwa przejścia w zależności od aktualnego stanu x.
+                Wylosuj liczbę z przedziału [0, 1) i na tej podstawie zdecyduj o przejściu do nowego stanu.
+                Zaktualizuj licznik odwiedzin dla nowego stanu.
+        Analiza wyników:
+            Po zakończeniu symulacji oblicz częstości odwiedzin dla każdego stanu: Pi_exp[i] = odwiedziny[i] / (double) Nmax;
+            Porównaj wyniki z teoretycznym rozkładem stacjonarnym uzyskanym w poprzednich zadaniach.
+
+Uwagi:
+
+    W powyższej implementacji założono, że w każdym kroku może nastąpić logowanie lub wylogowanie jednego użytkownika.
+    Prawdopodobieństwa przejść są obliczane dynamicznie w zależności od aktualnego stanu x.
+    Wynikiem symulacji są częstości odwiedzin poszczególnych stanów, które można porównać z teoretycznym rozkładem stacjonarnym.
+
+Aby uzyskać dokładniejsze wyniki, można zwiększyć wartość Nmax oraz przeprowadzić symulacje dla różnych stanów początkowych.

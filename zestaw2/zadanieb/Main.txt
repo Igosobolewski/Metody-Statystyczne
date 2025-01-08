@@ -1,0 +1,32 @@
+Aby eksperymentalnie wyznaczyć rozkład stacjonarny πEXPπEXP dla naszego łańcucha Markowa, możemy przeprowadzić symulację polegającą na wielokrotnym przechodzeniu między stanami zgodnie z macierzą przejść PP. Następnie obliczymy częstość odwiedzin każdego stanu, co pozwoli oszacować πEXPπEXP.
+
+Kroki do wykonania:
+
+    Inicjalizacja:
+        Wybierz stan początkowy xx (0, 1 lub 2).
+        Ustaw licznik odwiedzin dla każdego stanu na 0.
+
+    Symulacja:
+        Dla Nmax=104Nmax​=104 kroków:
+            Zwiększ licznik odwiedzin bieżącego stanu.
+            Wylosuj następny stan na podstawie prawdopodobieństw przejścia z macierzy PP.
+            Przejdź do nowego stanu.
+
+    Obliczenia:
+        Dla każdego stanu ii oblicz πiEXP=NiNπiEXP​=NNi​​, gdzie NiNi​ to liczba odwiedzin stanu ii, a NN to łączna liczba kroków.
+
+    Analiza:
+        Sporządź wykres zbieżności πiEXPπiEXP​ w funkcji liczby kroków NN.
+        Powtórz symulację dla różnych stanów początkowych.
+        Porównaj wyniki z teoretycznym rozkładem stacjonarnym ππ uzyskanym analitycznie.
+
+Analiza wyników:
+
+    Po uruchomieniu programu dla różnych stanów początkowych, zauważysz, że wartości πiEXPπiEXP​ zbliżają się do teoretycznych wartości rozkładu stacjonarnego ππ.
+    Niezależnie od stanu początkowego, po dostatecznie dużej liczbie kroków, rozkład odwiedzin powinien zbiegać do rozkładu stacjonarnego.
+
+Odpowiedź na pytanie:
+
+W rozważaniach dotyczących rozkładu stacjonarnego ππ pomijamy drugi indeks, ponieważ ππ jest wektorem, a nie macierzą. Oznacza to, że πiπi​ reprezentuje stacjonarne prawdopodobieństwo przebywania w stanie ii. Drugi indeks byłby stosowany w przypadku macierzy, np. macierzy przejść PijPij​, gdzie PijPij​ oznacza prawdopodobieństwo przejścia z stanu ii do stanu jj.
+
+Powyższa symulacja pozwala na eksperymentalne wyznaczenie rozkładu stacjonarnego i porównanie go z teoretycznym, co jest cennym narzędziem w analizie łańcuchów Markowa.

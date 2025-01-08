@@ -1,0 +1,69 @@
+Macierz przejść PP opisuje prawdopodobieństwa przejścia między stanami systemu w jednym kroku. W naszym przypadku mamy trzy stany:
+
+    x=0x=0: 0 zalogowanych użytkowników
+    x=1x=1: 1 zalogowany użytkownik
+    x=2x=2: 2 zalogowanych użytkowników
+
+Prawdopodobieństwa przejść między tymi stanami są następujące:
+
+    Z x=0x=0 do x=1x=1: Obaj użytkownicy są niezalogowani, każdy z nich ma prawdopodobieństwo 0,2 na zalogowanie się. Prawdopodobieństwo, że dokładnie jeden z nich się zaloguje, wynosi:
+
+    P(0→1)=2×0,2×0,8=0,32P(0→1)=2×0,2×0,8=0,32
+
+    Z x=0x=0 do x=2x=2: Obaj użytkownicy się logują:
+
+    P(0→2)=0,2×0,2=0,04P(0→2)=0,2×0,2=0,04
+
+    Z x=0x=0 do x=0x=0: Żaden użytkownik się nie loguje:
+
+    P(0→0)=0,8×0,8=0,64P(0→0)=0,8×0,8=0,64
+
+    Z x=1x=1 do x=0x=0: Zalogowany użytkownik wylogowuje się, a drugi pozostaje niezalogowany:
+
+    P(1→0)=0,5×0,8=0,4P(1→0)=0,5×0,8=0,4
+
+    Z x=1x=1 do x=1x=1: Zalogowany użytkownik pozostaje zalogowany, a drugi niezalogowany pozostaje niezalogowany, lub zalogowany się wylogowuje, a niezalogowany loguje:
+
+    P(1→1)=(0,5×0,8)+(0,5×0,2)=0,4+0,1=0,5P(1→1)=(0,5×0,8)+(0,5×0,2)=0,4+0,1=0,5
+
+    Z x=1x=1 do x=2x=2: Niezalogowany użytkownik loguje się, a zalogowany pozostaje zalogowany:
+
+    P(1→2)=0,5×0,2=0,1P(1→2)=0,5×0,2=0,1
+
+    Z x=2x=2 do x=1x=1: Jeden z dwóch zalogowanych użytkowników wylogowuje się:
+
+    P(2→1)=2×0,5×0,5=0,5P(2→1)=2×0,5×0,5=0,5
+
+    Z x=2x=2 do x=2x=2: Obaj zalogowani użytkownicy pozostają zalogowani:
+
+    P(2→2)=0,5×0,5=0,25P(2→2)=0,5×0,5=0,25
+
+    Z x=2x=2 do x=0x=0: Obaj zalogowani użytkownicy wylogowują się:
+
+    P(2→0)=0,5×0,5=0,25P(2→0)=0,5×0,5=0,25
+
+Z tych obliczeń możemy zbudować macierz przejść PP:
+P=[0,640,320,040,40,50,10,250,50,25]
+P=
+​0,640,40,25​0,320,50,5​0,040,10,25​
+​
+
+b) Znalezienie rozkładu stacjonarnego
+
+Rozkład stacjonarny ππ to wektor spełniający równanie πP=ππP=π oraz ∑πi=1∑πi​=1.
+
+Aby znaleźć ππ, rozwiązujemy układ równań:
+{0,64π0+0,4π1+0,25π2=π00,32π0+0,5π1+0,5π2=π10,04π0+0,1π1+0,25π2=π2π0+π1+π2=1
+⎩
+⎨
+⎧​0,64π0​+0,4π1​+0,25π2​=π0​0,32π0​+0,5π1​+0,5π2​=π1​0,04π0​+0,1π1​+0,25π2​=π2​π0​+π1​+π2​=1​
+
+Rozwiązując ten układ, otrzymujemy rozkład stacjonarny ππ.
+
+c) Sprawdzenie kryterium zbieżności
+
+Aby sprawdzić zbieżność, obliczamy normę różnicy między macierzami PNPN i PN−1PN−1 dla rosnących NN i sprawdzamy, czy jest mniejsza od zadanego ϵϵ.
+
+d) Wykres zbieżności
+
+Należy narysować wykres przedstawiający zależność PijNPijN​ od NN oraz wartości graniczne ΠijΠij
